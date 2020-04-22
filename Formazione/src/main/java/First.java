@@ -72,7 +72,7 @@ public class First {
     			//tabella su database
 				try 
 				{
-					Class.forName("com.mysql.cj.jdbc.Driver");
+					Class.forName("com.mysql.jdbc.Driver");
 				} 
 				catch (ClassNotFoundException e) 
 				{
