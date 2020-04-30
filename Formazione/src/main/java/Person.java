@@ -1,5 +1,4 @@
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Person {
 	private String chiave;
@@ -7,7 +6,7 @@ public class Person {
 	private String cognome;
 	private String data;
 
-	public Person (String k, String n, String c, String d)
+	public Person(String k, String n, String c, String d)
 	{
 		chiave = k;
 		nome = n;
@@ -15,52 +14,52 @@ public class Person {
 		data = d;
 	}
 	
-	public void setKey (String k)
+	public void setKey(String k)
 	{
 		chiave = k;
 	}
 	
-	public void setName (String n)
+	public void setName(String n)
 	{
 		nome = n;
 	}
 	
-	public void setSurname (String c)
+	public void setSurname(String c)
 	{
 		cognome = c;
 	}
 	
-	public void setDate (String d)
+	public void setDate(String d)
 	{
 		data = d;
 	}
 	
-	public String getKey ()
+	public String getKey()
 	{
 		return chiave;
 	}
 	
-	public String getName ()
+	public String getName()
 	{
 		return nome;
 	}
 	
-	public String getSurname ()
+	public String getSurname()
 	{
 		return cognome;
 	}
 	
-	public String getDate ()
+	public String getDate()
 	{
 		return data;
 	}
 	
-	public String printConsole ()
+	public String printConsole()
 	{
 		return "Chiave: " + chiave + "  Name: " + nome + "  surname: " + cognome + "  birthday: " + data;
 	}
 	
-	public void printCsv (FileWriter csv) throws IOException
+	public void printPersonOnCsv(FileWriter csv) throws IOException
 	{
 		csv.append(chiave);
        	csv.append(",");
@@ -72,4 +71,5 @@ public class Person {
     	csv.append("\n");
         csv.flush();
 	}
+	
 }
