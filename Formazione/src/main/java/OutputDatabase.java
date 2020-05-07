@@ -12,21 +12,17 @@ public class OutputDatabase implements Output {
 	}
 
 	@Override
-	public void run() throws ValidityException, ParsingException, IOException 
+	public void run(List<Person> personlist) throws ValidityException, ParsingException, IOException 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Inserisci il path del file: ");
-		String path = input.nextLine();
-		File file = new File(path);
 		DatabaseConnection dbc = DatabaseConnection.getInstance();
 		dbc.start();
 		try 
 		{
 			Statement stmt = dbc.getConnection().createStatement();					 
-			for (int q = 0; q < parser.parseXML(file).length; q++)
+			for (int i = 0; i < personlist.size(); i++)
 	        {
 				Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-				stmt.execute("INSERT INTO person (uniqueKey, name, surname, birth, tinsert) VALUES(" + "'" + parser.parseXML(file)[q].getKey() + "', '" + parser.parseXML(file)[q].getName() + "', '" + parser.parseXML(file)[q].getSurname() + "', '" + parser.parseXML(file)[q].getDate() + "', '" + timestamp + "')");
+				stmt.execute("INSERT INTO person (uniqueKey, name, surname, birth, tinsert) VALUES(" + "'" + personlist.get(i).getKey() + "', '" + personlist.get(i).getName() + "', '" + personlist.get(i).getSurname() + "', '" + personlist.get(i).getDate() + "', '" + timestamp + "')");
 	        }
 			System.out.println("Aggiunta al database avvenuta correttamente!");
 			stmt.close();

@@ -1,3 +1,4 @@
+import java.util.*;
 import java.io.*;
 import nu.xom.*;
 
@@ -19,12 +20,12 @@ public class Decorator implements Output {
 	}
 	
 	@Override
-	public void run() throws ValidityException, ParsingException, IOException 
+	public void run(List<Person> personlist) throws ValidityException, ParsingException, IOException 
 	{
 		OutputCsv outputcsv = new OutputCsv();
 		OutputDatabase outputdb = new OutputDatabase();
-		outputcsv.run();
-		outputdb.run();
+		outputcsv.run(personlist);
+		outputdb.run(personlist);
 	}
 
 }

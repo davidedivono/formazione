@@ -6,16 +6,23 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class TestCsv {
-	File file = new File("C:/RGI/Projects/socgen/formazione/output.csv");
 	String array[];
 	List<String> list = new ArrayList<>();
 	
 	@Before
-	public void before()
+	public void before() throws ValidityException, ParsingException, IOException
 	{
+		InputPath inputpath = new InputPath();
+		String path = inputpath.getPath();
+		File file = new File(path);
+		XmlPersonParser xmlpersonparser = new XmlPersonParser();
+		List<Person> personlist = new ArrayList<>();
+		personlist = xmlpersonparser.parseXML(file);
+		OutputCsv outputcsv = new OutputCsv();
+		outputcsv.run(personlist);
 		try
 		{
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new FileReader("C:/RGI/Projects/socgen/formazione/output.csv"));
 	        String line = "";
 	        while((line = reader.readLine()) != null)
 	        {

@@ -1,73 +1,74 @@
 import java.io.*;
 
 public class Person {
-	private String chiave;
-	private String nome;
-	private String cognome;
-	private String data;
+	private String key;
+	private String name;
+	private String surname;
+	private String date;
 
 	public Person(String k, String n, String c, String d)
 	{
-		chiave = k;
-		nome = n;
-		cognome = c;
-		data = d;
+		key = k;
+		name = n;
+		surname = c;
+		date = d;
 	}
 	
 	public void setKey(String k)
 	{
-		chiave = k;
+		key = k;
 	}
 	
 	public void setName(String n)
 	{
-		nome = n;
+		name = n;
 	}
 	
 	public void setSurname(String c)
 	{
-		cognome = c;
+		surname = c;
 	}
 	
 	public void setDate(String d)
 	{
-		data = d;
+		date = d;
 	}
 	
 	public String getKey()
 	{
-		return chiave;
+		return key;
 	}
 	
 	public String getName()
 	{
-		return nome;
+		return name;
 	}
 	
 	public String getSurname()
 	{
-		return cognome;
+		return surname;
 	}
 	
 	public String getDate()
 	{
-		return data;
+		return date;
 	}
 	
-	public String printConsole()
+	@Override
+	public String toString()
 	{
-		return "Chiave: " + chiave + "  Name: " + nome + "  surname: " + cognome + "  birthday: " + data;
+		return "Chiave: " + key + "  Name: " + name + "  surname: " + surname + "  birthday: " + date;
 	}
 	
-	public void printPersonOnCsv(FileWriter csv) throws IOException
+	public void toStringOnCsv(FileWriter csv) throws IOException
 	{
-		csv.append(chiave);
+		csv.append(key);
        	csv.append(",");
-		csv.append(nome);
+		csv.append(name);
        	csv.append(",");
-       	csv.append (cognome);
+       	csv.append (surname);
       	csv.append(",");
-      	csv.append(data);
+      	csv.append(date);
     	csv.append("\n");
         csv.flush();
 	}

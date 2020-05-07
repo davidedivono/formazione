@@ -1,3 +1,4 @@
+import java.util.*;
 import java.io.*;
 import nu.xom.*;
 
@@ -18,13 +19,13 @@ public class XmlPersonParser extends Parser {
 	    return instance;
 	}
 	
-	public Person[] parseXML(File file) throws ValidityException, ParsingException, IOException 
+	public List<Person> parseXML(File file) throws ValidityException, ParsingException, IOException 
 	{
 		Builder builder = new Builder();
         Document doc = builder.build(file);
         Element root = doc.getRootElement();
         Elements people = root.getChildElements("Person");
-		Person[] persone = new Person[people.size()];		
+        List<Person> list = new ArrayList<>();
         for (int q = 0; q < people.size(); q++)
         {
             Element person = people.get(q);
@@ -35,14 +36,14 @@ public class XmlPersonParser extends Parser {
             try 
             {
             	Person p = new Person(key.getValue(), name.getValue(), surname.getValue(), birth.getValue());
-            	persone[q] = p;
+            	list.add(p);
             }
             catch (NullPointerException ex)
             {
                 ex.printStackTrace();
             }
         }
-		return persone;	
+		return list;	
 	}
 	
 }

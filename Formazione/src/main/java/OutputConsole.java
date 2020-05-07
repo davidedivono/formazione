@@ -11,15 +11,11 @@ public class OutputConsole implements Output {
 	}
 
 	@Override
-	public void run() throws ValidityException, ParsingException, IOException 
+	public void run(List<Person> personlist) throws ValidityException, ParsingException, IOException 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Inserisci il path del file: ");
-		String path = input.nextLine();
-		File file = new File(path);
-		for (int q = 0; q < parser.parseXML(file).length; q++)
+		for (int i = 0; i < personlist.size(); i++)
         {
-            System.out.println(parser.parseXML(file)[q].printConsole());
+            System.out.println(personlist.get(i).toString());
         }		
 	}
 	

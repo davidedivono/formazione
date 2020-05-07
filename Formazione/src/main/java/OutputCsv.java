@@ -11,14 +11,10 @@ public class OutputCsv implements Output {
 	}
 
 	@Override
-	public void run() throws ValidityException, ParsingException, IOException 
+	public void run(List<Person> personlist) throws ValidityException, ParsingException, IOException 
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Inserisci il path del file: ");
-		String path = input.nextLine();
-		File file = new File(path);
 		FileWriter csv = new FileWriter("output.csv");
-		csv.append("Chiave");
+		csv.append("Key");
     	csv.append(",");
 		csv.append("Name");
     	csv.append(",");
@@ -26,9 +22,9 @@ public class OutputCsv implements Output {
     	csv.append(",");
     	csv.append("Birthday");
     	csv.append("\n");	    	
-		for (int q = 0; q < parser.parseXML(file).length; q++)
+		for (int i = 0; i < personlist.size(); i++)
         {
-			parser.parseXML(file)[q].printPersonOnCsv(csv);
+			personlist.get(i).toStringOnCsv(csv);;
         }
 		System.out.println("File csv creato correttamente!");
 	}
