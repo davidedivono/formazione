@@ -6,29 +6,27 @@ public class Main {
 	
 	public static void main (String[] args) throws ValidityException, ParsingException, IOException 
 	{
-		InputChoice inputchoice = new InputChoice();
-		int choice = inputchoice.getChoice();
-		InputPath inputpath = new InputPath();
-		String path = inputpath.getPath();
+		String choice = args[1];
+		String path = args[0];
 		File file = new File(path);
 		XmlPersonParser xmlpersonparser = new XmlPersonParser();
 		List<Person> personlist = new ArrayList<>();
 		personlist = xmlpersonparser.parseXML(file);
 		switch(choice)
     	{
-    		case 1:
+    		case "1":
     			OutputConsole outputconsole = new OutputConsole();
     			outputconsole.run(personlist);
     			break;
-    		case 2:
+    		case "2":
     			OutputCsv outputcsv = new OutputCsv();
     			outputcsv.run(personlist);
     			break;
-    		case 3:
+    		case "3":
     			OutputDatabase outputdb = new OutputDatabase();
     			outputdb.run(personlist);
     			break;
-    		case 4:
+    		case "4":
     			Decorator decorator = Decorator.getInstance();
     			decorator.run(personlist);
     			break;

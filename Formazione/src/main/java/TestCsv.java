@@ -12,8 +12,7 @@ public class TestCsv {
 	@Before
 	public void before() throws ValidityException, ParsingException, IOException
 	{
-		InputPath inputpath = new InputPath();
-		String path = inputpath.getPath();
+		String path = "C:/RGI/Projects/Corso/personlist.xml";
 		File file = new File(path);
 		XmlPersonParser xmlpersonparser = new XmlPersonParser();
 		List<Person> personlist = new ArrayList<>();
